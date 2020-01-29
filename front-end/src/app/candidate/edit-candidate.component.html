@@ -1,0 +1,53 @@
+
+<div class="container=fluid">
+<div class="mon">
+  <h3>{{candidate.surname}}  {{candidate.other | firstWord}}.</h3>
+  <h6>{{candidate.fac}} - {{candidate.dep}}</h6>
+  <h6>{{candidate.lev}}</h6>
+</div>
+
+
+
+  <div *ngIf="!candidate " class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <h4>Accessors</h4>
+<div  >
+  <form  (ngSubmit)="updateForm()" [formGroup]="EditCan"   novalidate >
+
+    <div formArrayName="accessor" class="row"  >
+        <div *ngFor=" let access of accessor.controls; let i = index" >
+          <div   class="offset-2 col-md-12">
+            <div [formGroupName]="i" id="main" >
+              <div class="form-group ">
+                <input  class="form-control" type="text"  formControlName="accessorname"   />
+              </div>
+            <div  class="form-group">
+              <input   class="form-control" type="text" formControlName="accessoremail"  />
+            </div>
+             <div class="form-group">
+              <input  class="form-control" type="text" formControlName="university" />
+             </div>
+             <div class="offset-1 form-group">
+              <input type="radio" class="form-check-input" formControlName="status" value="invitationsent" />Invitation Sent<br><br>
+              <input type="radio" class="form-check-input" formControlName="status" value="applicationsent" />Application Recieved<br><br>
+              <input type="radio" class="form-check-input" formControlName="status" value="papersent"  />Paper Sent<br><br>
+              <input type="radio" class="form-check-input" formControlName="status" value="paperrecieved" />Paper Recieved<br><br>
+             </div>
+
+            </div>
+          </div >
+
+        </div>
+    </div>
+    <div>
+      <button  class="offset-8 btn btn-danger " type="submit">Update</button>
+    </div>
+
+</form>
+</div>
+
+</div>
+
